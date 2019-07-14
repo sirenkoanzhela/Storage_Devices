@@ -1,5 +1,5 @@
 #pragma once
-#include "Storage_Device.h"
+#include "Storage_devices.h"
 
 class DVD :public StorageDevice
 {
@@ -7,7 +7,9 @@ class DVD :public StorageDevice
 public:
 	DVD();
 	DVD(std::string, std::string, int, int, int);
+	void setWrite_speed(int);
 	void Print();
+	void Input()override;
 	void Save()override;
 	void Load()override;
 };

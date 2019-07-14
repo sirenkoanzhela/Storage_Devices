@@ -1,17 +1,20 @@
 #pragma once
-#include "Storage_Device.h"
-#include <list>
+#include "Storage_devices.h"
+#include "Template_list.h"
+#include <string>
 
 class StorageDevicesList
 {
-	//Template_List<StorageDevice*>list;
+	List<StorageDevice*>list;
 public:
-	void AddDevice();
+	StorageDevicesList();
+	void AddDevice(StorageDevice*);
 	void RemoveDevice(int);
 	void EditDevice(int);
 	void PrintList();
-	void FindDevice(std::string);
-	void FindDevice(int);
+	StorageDevice* FindDevice(std::string);
+	StorageDevice* FindDevice(int);
 	void Save();
 	void Load();
+	StorageDevicesList& operator+(const StorageDevicesList&obj);
 };

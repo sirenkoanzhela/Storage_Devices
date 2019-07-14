@@ -1,5 +1,5 @@
 #pragma once
-#include "Storage_Device.h"
+#include "Storage_devices.h"
 
 class HDD :public StorageDevice
 {
@@ -7,6 +7,8 @@ class HDD :public StorageDevice
 public:
 	HDD();
 	HDD(std::string, std::string, int, int, int);
+	void Input()override;
+	void setSpindle_speed(int);
 	void Print()override;
 	void Save()override;
 	void Load()override;

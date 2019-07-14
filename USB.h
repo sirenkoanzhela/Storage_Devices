@@ -1,5 +1,5 @@
 #pragma once
-#include "Storage_Device.h"
+#include "Storage_devices.h"
 
 class USB :public StorageDevice
 {
@@ -8,7 +8,10 @@ class USB :public StorageDevice
 public:
 	USB();
 	USB(std::string, std::string, int, int, int, int);
+	void Input()override;
 	void Print();
+	void setRead_speed(int);
+	void setWrite_speed(int);
 	void Save()override;
 	void Load()override;
 };
