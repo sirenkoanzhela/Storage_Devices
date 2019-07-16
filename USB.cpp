@@ -19,9 +19,18 @@ void USB::Input()
 
 void USB::Print()
 {
+	std::cout << "TYPE: USB" << std::endl;
 	StorageDevice::Print();
 	std::cout << "Read speed: " << read_speed << std::endl;
 	std::cout << "Write speed: " << write_speed << std::endl;
+}
+
+void USB::setRead_speed(int)
+{
+}
+
+void USB::setWrite_speed(int)
+{
 }
 
 void USB::Save()

@@ -13,8 +13,16 @@ void HDD::Input()
 	setSpindle_speed(_spindle_speed);
 }
 
+void HDD::setSpindle_speed(int sp)
+{
+	if (sp < 0 || sp != 4200 || sp != 5400 || sp != 7200 || sp != 10000 || sp != 15000)
+		return;
+	spindle_speed = sp;
+}
+
 void HDD::Print()
 {
+	std::cout << "TYPE: HDD" << std::endl;
 	StorageDevice::Print();
 	std::cout << "Spindle speed: " << spindle_speed << std::endl;
 }

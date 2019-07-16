@@ -1,5 +1,5 @@
 #pragma once
-#include "Storage_devices.h"
+#include "Storage_Device.h"
 #include "Template_list.h"
 #include <string>
 
@@ -16,5 +16,5 @@ public:
 	StorageDevice* FindDevice(int);
 	void Save();
 	void Load();
-	StorageDevicesList& operator+(const StorageDevicesList&obj);
+	StorageDevicesList& operator+(const StorageDevicesList& obj);
 };

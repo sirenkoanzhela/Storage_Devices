@@ -5,13 +5,13 @@ template <typename T>
 struct Element
 {
 	T data;
-	Element * Next;
+	Element* Next;
 };
 
 template <typename T>
 class List
 {
-	Element<T> * Head;
+	Element<T>* Head;
 	int Count;
 
 public:
@@ -34,7 +34,7 @@ public:
 	int Find(T);
 	T Find(int);
 	List(const List<T>&);
-	List<T>&operator=(const List<T>&);
+	List<T>& operator=(const List<T>&);
 };
 
 template <typename T>
@@ -91,7 +91,7 @@ void List<T>::DelAll()
 template <typename T>
 void List<T>::Print()
 {
-	Element<T> * temp = Head;
+	Element<T>* temp = Head;
 	if (temp == nullptr)
 	{
 		std::cout << "List is empty!";
@@ -111,14 +111,14 @@ void List<T>::InsertByPosition(T data, int position)
 	if (position <= 0 && GetCount() < position) { return; }
 	if (Head == nullptr) { Add(data); return; }
 
-	Element<T>*temp = new Element;
+	Element<T>* temp = new Element;
 	temp->Next = Head;
 
 	for (int i = 0; i < position - 1; i++)
 	{
 		temp = temp->Next;
 	}
-	Element<T>*current = new Element;
+	Element<T>* current = new Element;
 	current->data = data;
 
 	current->Next = temp->Next;
@@ -133,8 +133,8 @@ void List<T>::RemoveByPosition(int position)
 	if (position < 0 && position > GetCount()) { return; }
 	if (Head == nullptr) { return; }
 
-	Element<T>*del = Head;
-	Element<T>*curr = nullptr;
+	Element<T>* del = Head;
+	Element<T>* curr = nullptr;
 	for (int i = 0; i < position - 1; i++)
 	{
 		del = del->Next;
@@ -152,7 +152,7 @@ int List<T>::Find(T key)
 {
 	if (Head == nullptr) return -1;
 	int pos = 0;
-	for (Element<T>*current = Head; current != nullptr; current = current->Next)
+	for (Element<T>* current = Head; current != nullptr; current = current->Next)
 	{
 		if (current->data == key)return pos;
 		pos++;
@@ -163,25 +163,32 @@ int List<T>::Find(T key)
 template<typename T>
 T List<T>::Find(int position)
 {
-	if (position < 0 || position >= Count) { return 0 };
-	if (Head == nullptr) return 0;
+	try {
+		if (position < 0 || position >= Count) throw "Invalid position";
+		if (Head == nullptr) return 0;
+	} 
+	catch (char* c)
+	{
+		std::cout << c << std::endl;
+	}
+	
 
-	Element<T>*temp = Head;
+	Element<T>* temp = Head;
 	for (int i = 0; i < position; i++)
 	{
 		temp = temp->Next;
 	}
-	return temp;
+	return temp->data;
 }
 
 template <typename T>
-List<T>::List(const List&obj)
+List<T>::List(const List& obj)
 {
 	Count = 0;
 	Head = nullptr;
 
 	int i = 1;
-	for (Element<T>*temp = obj.Head; temp != nullptr; temp = temp->Next)
+	for (Element<T>* temp = obj.Head; temp != nullptr; temp = temp->Next)
 	{
 		InsertByPosition(temp->data, i);
 		i++;
@@ -189,13 +196,13 @@ List<T>::List(const List&obj)
 }
 
 template <typename T>
-List<T> & List<T>::operator=(const List<T> &obj)
+List<T>& List<T>::operator=(const List<T>& obj)
 {
 	if (this == &obj) { return *this; }
 	DelAll();
 
 	int i = 1;
-	for (Element<T>*temp = obj.Head; temp != nullptr; temp = temp->Next)
+	for (Element<T>* temp = obj.Head; temp != nullptr; temp = temp->Next)
 	{
 		InsertByPosition(temp->data, i);
 		i++;

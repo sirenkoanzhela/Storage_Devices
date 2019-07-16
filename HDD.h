@@ -1,5 +1,5 @@
 #pragma once
-#include "Storage_devices.h"
+#include "Storage_Device.h"
 
 class HDD :public StorageDevice
 {
