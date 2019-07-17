@@ -19,19 +19,19 @@ public:
 	{
 		return model;
 	}
-	int getStorage_capacity()
+	inline int getStorage_capacity()
 	{
 		return storage_capacity;
 	}
-	int getCount()
+	inline int getCount()
 	{
 		return count;
 	}
-	void setName(std::string _name)
+	inline void setName(std::string _name)
 	{
 		name = _name;
 	}
-	void setModel(std::string _model)
+	inline void setModel(std::string _model)
 	{
 		model = _model;
 	}

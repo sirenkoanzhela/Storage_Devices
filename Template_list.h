@@ -35,6 +35,7 @@ public:
 	T Find(int);
 	List(const List<T>&);
 	List<T>& operator=(const List<T>&);
+	int getCount();
 };
 
 template <typename T>
@@ -57,17 +58,18 @@ int List<T>::GetCount()
 }
 
 template <typename T>
-void List<T>::Add(T data)
+void List<T>::Add(T _data)
 {
 	Element <T>* temp = new Element<T>;
 
-	temp->data = data;
+	temp->data = _data;
 	temp->Next = Head;
 
 	Head = temp;
 
 	Count++;
 }
+
 
 template <typename T>
 void List<T>::Del()
@@ -89,20 +91,25 @@ void List<T>::DelAll()
 }
 
 template <typename T>
-void List<T>::Print()
+void List<T>::Print() //
 {
-	Element<T>* temp = Head;
-	if (temp == nullptr)
+	try
 	{
-		std::cout << "List is empty!";
-		return;
+		Element<T>* temp = Head;
+
+		if (temp == nullptr)
+			throw "Any device exists";
+		while (temp != 0)
+		{
+			std::cout << temp->data;
+			temp = temp->Next;
+		}
+		std::cout << std::endl;
 	}
-	while (temp != 0)
+	catch (char* str)
 	{
-		std::cout << temp->data;
-		temp = temp->Next;
+		std::cout << str << std::endl;
 	}
-	std::cout << std::endl;
 }
 
 template <typename T>
@@ -111,14 +118,14 @@ void List<T>::InsertByPosition(T data, int position)
 	if (position <= 0 && GetCount() < position) { return; }
 	if (Head == nullptr) { Add(data); return; }
 
-	Element<T>* temp = new Element;
+	Element<T>* temp = new Element<T>;
 	temp->Next = Head;
 
 	for (int i = 0; i < position - 1; i++)
 	{
 		temp = temp->Next;
 	}
-	Element<T>* current = new Element;
+	Element<T>* current = new Element<T>;
 	current->data = data;
 
 	current->Next = temp->Next;
@@ -165,20 +172,19 @@ T List<T>::Find(int position)
 {
 	try {
 		if (position < 0 || position >= Count) throw "Invalid position";
-		if (Head == nullptr) return 0;
-	} 
+		if (Head == nullptr) throw "Any device exists";
+
+		Element<T>* temp = Head;
+		for (int i = 0; i < position; i++)
+		{
+			temp = temp->Next;
+		}
+		return temp->data;
+	}
 	catch (char* c)
 	{
 		std::cout << c << std::endl;
 	}
-	
-
-	Element<T>* temp = Head;
-	for (int i = 0; i < position; i++)
-	{
-		temp = temp->Next;
-	}
-	return temp->data;
 }
 
 template <typename T>
@@ -208,4 +214,10 @@ List<T>& List<T>::operator=(const List<T>& obj)
 		i++;
 	}
 	return *this;
+}
+
+template<typename T>
+int List<T>::getCount()
+{
+	return Count;
 }

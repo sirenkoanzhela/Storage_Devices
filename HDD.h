@@ -6,7 +6,7 @@ class HDD :public StorageDevice
 	int spindle_speed;
 public:
 	HDD();
-	HDD(std::string, std::string, int, int, int);
+	HDD( std::string, int, int, int);
 	void Input()override;
 	void setSpindle_speed(int);
 	void Print()override;

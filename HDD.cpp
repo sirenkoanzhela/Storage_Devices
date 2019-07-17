@@ -1,8 +1,11 @@
 #include "HDD.h"
 
-HDD::HDD() :StorageDevice::StorageDevice(), spindle_speed(0) {}
-HDD::HDD(std::string _name, std::string _model, int _storage_capacity, int _count, int _spindle_speed)
-	: StorageDevice(_name, _model, _storage_capacity, _count), spindle_speed(_spindle_speed) {}
+HDD::HDD() :StorageDevice::StorageDevice(), spindle_speed(0) 
+{
+	name = "Hard disk drive";
+}
+HDD::HDD(std::string _model, int _storage_capacity, int _count, int _spindle_speed)
+	: StorageDevice("Hard disk drive", _model, _storage_capacity, _count), spindle_speed(_spindle_speed) {}
 
 void HDD::Input()
 {

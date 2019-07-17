@@ -16,5 +16,9 @@ public:
 	StorageDevice* FindDevice(int);
 	void Save();
 	void Load();
+	int getCountDevice()
+	{
+		return list.getCount();
+	}
 	StorageDevicesList& operator+(const StorageDevicesList& obj);
 };
