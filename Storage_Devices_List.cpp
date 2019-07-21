@@ -1,4 +1,5 @@
 #include "Storage_Devices_List.h"
+#include "Template_list.h"
 
 
 StorageDevicesList::StorageDevicesList() {}
@@ -48,16 +49,18 @@ void StorageDevicesList::PrintList()
 	try
 	{
 		if (list.getCount() == 0)
-			throw "Any device exists";
+			throw 0;
 
 		for (int i = 0; i < list.getCount(); i++)
 		{
 			list.Find(i)->Print();
+			std::cout << std::endl;
 		}
 	}
-	catch (char* str)
+	catch (int a)
 	{
-		std::cout << str << std::endl;
+		std::cout << "Any device exists" << std::endl;
+		return;
 	}
 }
 
@@ -79,17 +82,23 @@ StorageDevice* StorageDevicesList::FindDevice(int pos)
 	{
 		if (list.getCount() == 0)
 		{
-			throw "Any device exists";
+			throw 0;
 		}
 		if (pos >= list.getCount())
 		{
-			throw "Invalid position";
+			throw 1;
 		}
 		return list.Find(pos);
 	}
-	catch (char* str)
+	catch (int a)
 	{
-		std::cout << str << std::endl;
+		if (a == 0)
+		{
+			std::cout << "Any device exists" << std::endl;
+			return nullptr;
+		}
+		std::cout << "Incorrect position" << std::endl;
+		return nullptr;
 	}
 
 }
