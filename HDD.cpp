@@ -1,6 +1,6 @@
 #include "HDD.h"
 
-HDD::HDD() :StorageDevice::StorageDevice(), spindle_speed(0) 
+HDD::HDD() :StorageDevice::StorageDevice(), spindle_speed(0)
 {
 	name = "Hard disk drive";
 }

@@ -1,8 +1,8 @@
 #include "USB.h"
 
 USB::USB() :StorageDevice::StorageDevice(), read_speed(0), write_speed(0) {}
-USB::USB(std::string _name, std::string _model, int _storage_capacity, int _count, int _read_speed, int _write_speed)
-	: StorageDevice(_name, _model, _storage_capacity, _count), read_speed(_read_speed), write_speed(_write_speed) {}
+USB::USB(std::string _model, int _storage_capacity, int _count, int _read_speed, int _write_speed)
+	: StorageDevice("Universal Serial Bus", _model, _storage_capacity, _count), read_speed(_read_speed), write_speed(_write_speed) {}
 
 void USB::Input()
 {
